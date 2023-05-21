@@ -61,7 +61,85 @@ function createList() {
 
     foodArray.forEach(function (element,) {
         var li = document.createElement('li');
-        li.innerHTML = element.foodName + ": " + element.calories + " calories, " + element.fats + "g fat, " + element.proteins + "g protein, " + element.carbs + "g carbs";
+        li.innerHTML = element.foodName + ": " + element.calories + " calories, " + element.fats + "g fat, " + element.proteins + "g protein, " + element.carbs + "g carbs" ;
         foodUl.appendChild(li);
     });
+    
 };
+function calculateTotalCalories() {
+  let totalCalories = 0;
+  for (let i = 0; i < foodArray.length; i++) {
+    totalCalories += foodArray[i].calories;
+  }
+  alert("Total Calories: " + totalCalories);
+}
+
+function calculateMacronutrients() {
+  let totalCarbs = 0;
+  let totalProteins = 0;
+  let totalFats = 0;
+  for (let i = 0; i < foodArray.length; i++) {
+    totalCarbs += foodArray[i].carbs;
+    totalProteins += foodArray[i].proteins;
+    totalFats += foodArray[i].fats;
+  }
+  alert("Carbs: " + totalCarbs + "g\nProteins: " + totalProteins + "g\nFats: " + totalFats + "g");
+}
+
+function checkHealthiness() {
+
+  let totalCalories = 0;
+  let totalCarbs = 0;
+  let totalProteins = 0;
+  let totalFats = 0;
+
+  for (let i = 0; i < foodArray.length; i++) {
+    totalCalories += foodArray[i].calories;
+    totalCarbs += foodArray[i].carbs;
+    totalProteins += foodArray[i].proteins;
+    totalFats += foodArray[i].fats;
+  }
+
+  let calorieRange = [1600, 2000];
+  let carbRange = [170, 238];
+  let proteinThreshold = 54;
+  let fatRange = [34, 68];
+
+  let healthinessMessage = "";
+
+  if (totalCalories >= calorieRange[0] && totalCalories <= calorieRange[1]) {
+    healthinessMessage += "GOOD:      Great job your calories are in a healthy range!<br>";
+  } else if (totalCalories < calorieRange[0]) {
+    healthinessMessage += "LOW:       Your calories are low, you may want to eat more.<br>";
+  } else {
+    healthinessMessage += "HIGH:      Your calories are high, you may want to eat less or move more.<br>";
+  }
+
+  if (totalCarbs >= carbRange[0] && totalCarbs <= carbRange[1]) {
+    healthinessMessage += "GOOD:      Great job your carbs are in a healthy range!<br>";
+  } else if (totalCarbs < carbRange[0]) {
+    healthinessMessage += "LOW:       Your carbs are low, you may want to eat more.<br>";
+  } else {
+    healthinessMessage += "HIGH:      Your carbs are high, you may want to eat less or move more.<br>";
+  }
+
+  if (totalProteins >= proteinThreshold) {
+    healthinessMessage += "GOOD:      Great job your protein is high enough, it helps build muscle!<br>";
+  } else {
+    healthinessMessage += "LOW:       Your protein is low, you may want to consider eating more so you can be healthier<br>";
+  }
+
+  if (totalFats >= fatRange[0] && totalFats <= fatRange[1]) {
+    healthinessMessage += "GOOD:      Great job your fats are in a healthy range!<br>";
+  } else if (totalFats < fatRange[0]) {
+    healthinessMessage += "LOW:       Your fats are low, fats while being unhealthy in large amounts are still necessary to be healthy and to prevent consuming your own muscles for sustenence <br>";
+  } else {
+    healthinessMessage += "HIGH:      Your fats are too high, you should eat less or it will lead to obesity and other health problems.<br>";
+  }
+
+  healthinessMessage += "<br>Please note that individual requirements may vary depending on physical activity and metabolism.";
+
+  document.getElementById("healthinessItem").innerHTML = healthinessMessage;
+
+
+}

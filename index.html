@@ -49,14 +49,14 @@
               </div>
             </div>
             <div data-role="main" class="ui-content">
-              <label for="nameInput">Name of food:</label>
-              <input type="text" id="nameInput" name="nameInput" placeholder="Enter the name of your food">
-              <label for="caloriesInput">Calories:</label>
-              <input type="number" id="caloriesInput" name="caloriesInput" placeholder="Enter the calories of your food">
+              <label for="dataInput">Name of food:</label>
+              <input type="text" id="dataInput" name="dataInput" placeholder="Enter the name of your food">
+              <label for="calorieInput">Calories:</label>
+              <input type="number" id="calorieInput" name="calorieInput" placeholder="Enter the calories of your food">
               <label for="proteinInput">Protein:</label>
               <input type="number" id="proteinInput" name="proteinInput" placeholder="Enter the protein count in your food">
-              <label for="carbsInput">Carbs:</label>
-              <input type="number" id="carbsInput" name="carbsInput" placeholder="Enter the number of carbs in your food">
+              <label for="carbInput">Carbs:</label>
+              <input type="number" id="carbInput" name="carbInput" placeholder="Enter the number of carbs in your food">
               <label for="fatInput">Fats:</label>
               <input type="number" id="fatInput" name="fatInput" placeholder="Enter the amount of fat in your food">
              
@@ -96,22 +96,24 @@
               <h1>Calorie and Nutrient App</h1>
               <div data-role="navbar">
                 <ul>
-                  <li><a href="#foodEntry" >Enter a food</a></li>
-                  <li><a href="#viewFoods" >View Foods</a></li>
-                  <li><a href="#home" >Home</a></li>
-                  
+                  <li><a href="#foodEntry">Enter a food</a></li>
+                  <li><a href="#viewFoods">View Foods</a></li>
+                  <li><a href="#home">Home</a></li>
                 </ul>
               </div>
-              
             </div>
             <div data-role="footer" data-position="fixed" data-theme="b" style="background-color: #2f89fc;">
-                <h4> Footer Inc.</h4>
-              </div>
+              <h4>Footer Inc.</h4>
+            </div>
             <div data-role="main" class="ui-content">
-              <p>Will probably make this count up all the calories for the day using the foodArray. May or may not also calculate how healthy a food is based on the amount of each of the different inputs depending on how complicated I wanna go with it</p>
-             
-            
+              <ul id="todayList" data-role="listview" data-inset="true">
+                <li id="caloriesItem" onclick="calculateTotalCalories()">Total Calories</li>
+                <li id="macronutrientsItem" onclick="calculateMacronutrients()">Carbs, Protein, and Fats</li>
+                <li id="healthinessItem" onclick="checkHealthiness()">Check Healthiness</li>
+
+              </ul>
             </div>
           </div>
+          
 </body>
 </html>
